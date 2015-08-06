@@ -96,9 +96,10 @@ __END__
 
 =pod
 
-# ABSTRACT: Split a git log stream into records
-
 =head1 NAME
+
+Git::Repository::Log::Queue::Iterator - Get a log from set of git-log streams
+
 
 =head1 SYNOPSIS
 
@@ -116,6 +117,17 @@ __END__
         ...;
     }
 
-=head1 DESCRIPTION
+
+=head1 AUTHOR
+
+KUBO Koichi  C<< <k@obuk.org> >>
+
+
+=head1 LICENCE AND COPYRIGHT
+
+Copyright (c) 2015, KUBO Koichi C<< <k@obuk.org> >>. All rights reserved.
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
 
 =cut

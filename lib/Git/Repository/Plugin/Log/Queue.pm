@@ -36,7 +36,6 @@ our @ISA      = qw( Git::Repository::Plugin );
 sub _keywords { qw( log_queue ) }
 
 use Git::Repository qw( Log );
-# use Git::Repository::Log::Iterator;
 use Git::Repository::Log::Queue::Iterator;
 
 sub log_queue {
