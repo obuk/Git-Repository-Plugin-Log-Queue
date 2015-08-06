@@ -51,12 +51,16 @@ sub new {
       }
     }
   }
-  my @queue;
-  for (@r) {
-    my $iterator = $_->log(@cmd);
-    push @queue, { iterator => $iterator, r => $_ };
-  }
+
+  # default git_dir
+  @r = Git::Repository->new() unless @r;
+
+  # setup iterators
+  my @queue = map { +{ iterator => scalar $_->log(@cmd), r => $_ } } @r;
+
+  # order for the next()
   my $reverse = grep { $_ eq '--reverse' } @cmd;
+
   bless { queue => \@queue, reverse => $reverse }, $class;
 }
 
