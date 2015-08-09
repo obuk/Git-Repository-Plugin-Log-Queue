@@ -17,7 +17,7 @@ sub new {
   if (ref $_[0] eq 'ARRAY') {
     my $gitdirs = shift;
     for (@$gitdirs) {
-      if (ref $_ && $_->isa('Git::Repository')) {
+      if (blessed $_ && $_->isa('Git::Repository')) {
         push @r, $_;
       } else {
         push @r, Git::Repository->new(git_dir => $_);
@@ -26,13 +26,13 @@ sub new {
   } else {
     while (@_) {
       local $_ = shift;
-      if (ref $_ && $_->isa('Git::Repository')) {
+      if (blessed $_ && $_->isa('Git::Repository')) {
         push @r, $_;
-      } elsif (/^--$/) {
+      } elsif ($_ eq '--') {
         push @cmd, $_, @_;
         last;
       } elsif (/^--git-dir=(.*)$/) {
-        my $r = eval { Git::Repository->new(git_dir => $_) };
+        my $r = eval { Git::Repository->new(git_dir => $1) };
         if ($r) {
           push @r, $r;
         } else {
