@@ -17,7 +17,7 @@ This document describes Git::Repository::Plugin::Log::Queue version 0.0.3
 =cut
 
 use version;
-our $VERSION = qv('0.0.3');
+our $VERSION = qv('0.0.4');
 
 
 =head1 SYNOPSIS
@@ -25,8 +25,8 @@ our $VERSION = qv('0.0.3');
     # load mailmap plugin
     use Git::Repository 'Log::Queue';
 
-    my $q = Git::Repository->queue([ @repos ], @cmd);
-    my $q = Git::Repository->queue(@cmd);
+    my $q = Git::Repository->log_queue([ @repos ], @cmd);
+    my $q = Git::Repository->log_queue(@cmd);
 
 =cut
 
