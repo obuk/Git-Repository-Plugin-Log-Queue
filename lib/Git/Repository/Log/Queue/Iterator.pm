@@ -64,6 +64,11 @@ sub new {
   bless { queue => \@queue, reverse => $reverse }, $class;
 }
 
+sub r {
+  my ($self) = @_;
+  $self->{queue}->[0]->{r};
+}
+
 
 sub next {
   my ($self) = @_;
